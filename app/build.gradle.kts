@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-
+    //added dependencies for Room
     implementation(libs.room.runtime)
     annotationProcessor(libs.room.compiler)
 

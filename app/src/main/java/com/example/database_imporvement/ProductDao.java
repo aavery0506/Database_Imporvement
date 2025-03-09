@@ -12,8 +12,8 @@ public interface ProductDao {
     @Insert
     void insertProduct(Product product);
 
-    @Query("SELECT * FROM products WHERE productName = :name")
-    List<Product> findProduct(String name);
+    @Query("SELECT * FROM products WHERE productName = :name") //SQLite statement/command
+    List<Product> findProduct(String name); //Java
 
     @Query("DELETE FROM products WHERE productName = :name")
     void deleteProduct(String name);

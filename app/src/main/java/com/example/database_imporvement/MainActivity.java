@@ -31,16 +31,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-
+        //view binding
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        productList = new ArrayList<>();
 
+        productList = new ArrayList<>();
+        //callback method
         RoomDatabase.Callback myCallback = new RoomDatabase.Callback() {
         };
 
+        //build and create a connection to the database
         productdb = Room.databaseBuilder(getApplicationContext(),ProductRoomDatabase.class,"products")
                         .addCallback(myCallback).build();
 

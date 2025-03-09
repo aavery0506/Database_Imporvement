@@ -3,7 +3,7 @@ package com.example.database_imporvement;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
+//make this class an Entity object with a table name of products
 @Entity(tableName = "products")
 public class Product {
 
@@ -20,19 +20,19 @@ public class Product {
         this.name = name;
         this.quantity= quantity;
     }
-
+    //getters
     public int getID(){
         return id;
     }
 
     public String getName(){
-        return name;
+        return this.name;
     }
 
     public int getQuantity(){
-        return quantity;
+        return this.quantity;
     }
-
+    //setters
     public void setID(int id){
         this.id = id;
     }
