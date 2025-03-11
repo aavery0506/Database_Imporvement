@@ -21,7 +21,7 @@ public class Product {
         this.quantity= quantity;
     }
     //getters
-    public int getID(){
+    public int getId(){
         return id;
     }
 
@@ -33,7 +33,7 @@ public class Product {
         return this.quantity;
     }
     //setters
-    public void setID(int id){
+    public void setId(int id){
         this.id = id;
     }
 

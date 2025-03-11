@@ -1,6 +1,7 @@
 package com.example.database_imporvement;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -40,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
         productList = new ArrayList<>();
         //callback method
         RoomDatabase.Callback myCallback = new RoomDatabase.Callback() {
+            @Override
+            public void onCreate(@NonNull SupportSQLiteDatabase db){
+                super.onCreate(db);
+            }
+            @Override
+            public void onOpen(@NonNull SupportSQLiteDatabase db){
+                super.onOpen(db);
+            }
         };
 
         //build and create a connection to the database
@@ -92,11 +101,11 @@ public class MainActivity extends AppCompatActivity {
 
                 StringBuilder finalString = new StringBuilder();
 
-                for(Product temp :productList){
+                for(Product temp : productList){
                     finalString.append(temp.getName()).append("   |   ").append(temp.getQuantity())
                             .append("\n");
                 }
-
+                Log.d("testing","basil");
                 binding.editTextOut.setText(finalString);
             }
         });
