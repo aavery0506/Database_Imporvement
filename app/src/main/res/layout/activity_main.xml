@@ -12,45 +12,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="20dp"
         android:text="Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toTopOf="@+id/textViewQuantity"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="44dp" />
 
     <EditText
         android:id="@+id/textViewQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="102dp"
         android:text="Quantity"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintBottom_toTopOf="@+id/buttonRetrieve"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewName" />
+        tools:layout_editor_absoluteY="110dp" />
 
     <Button
         android:id="@+id/buttonRetrieve"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:text="Retrieve"
-        app:layout_constraintBottom_toTopOf="@+id/editTextOut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewQuantity"/>
+        android:layout_width="153dp"
+        android:layout_height="59dp"
+        android:text="Retrieve Product List"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="298dp" />
 
     <Button
         android:id="@+id/buttonSave"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        android:layout_width="154dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="240dp"
+        android:text=" Save Product"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        tools:layout_editor_absoluteY="191dp" />
 
     <EditText
         android:id="@+id/editTextOut"
@@ -63,12 +55,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline"
-        tools:text="Database output"/>
+        tools:text="Database output" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id = "@+id/guideline"
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.5" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E70505"
+        android:checkable="true"
+        android:text="Clear List"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="281dp"
+        tools:layout_editor_absoluteY="303dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Enter Product Name and Quantity"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
