@@ -21,19 +21,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         super();
         details = new ArrayList<>();
 
-        details.add("Card 1");
+        //details.add("Card 1");
 
-        details.add("Card 2");
+       // details.add("Card 2");
 
-        details.add("Card 3");
+       // details.add("Card 3");
 
-        details.add("Card 4");
+        //details.add("Card 4");
 
-        details.add("Card 5");
+        //details.add("Card 5");
 
-        details.add("Card 6");
+        //details.add("Card 6");
 
-        details.add("Card 7");
+        //details.add("Card 7");
 
     }
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -57,17 +57,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.description.setText(details.get(position));
+        holder.description.setText(this.details.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return details.size();
+        return this.details.size();
     }
 
     public void addCard(Product product){
-        details.add(product.toString());
+        this.details.add(product.toString());
     }
 }
 //dynamically add and remove from recycler view
