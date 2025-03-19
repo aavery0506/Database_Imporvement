@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
@@ -28,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
     private ProductRoomDatabase productdb;
     private ArrayList<Product> productList;
 
+    private RecyclerAdapter adapter;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        layoutManager = new LinearLayoutManager(this);
+        binding.rview.setLayoutManager(layoutManager);
+        adapter = new RecyclerAdapter();
+        binding.rview.setAdapter(adapter);
+
+
 
 
         productList = new ArrayList<>();
@@ -106,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                             .append("\n");
                 }
                 Log.d("testing","basil");
-                binding.editTextOut.setText(finalString);
+
             }
         });
     }
