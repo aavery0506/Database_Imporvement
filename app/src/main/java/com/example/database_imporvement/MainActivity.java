@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
         adapter = new RecyclerAdapter();
         binding.rview.setAdapter(adapter);
 
-
-
-
         productList = new ArrayList<>();
         //callback method
         RoomDatabase.Callback myCallback = new RoomDatabase.Callback() {
