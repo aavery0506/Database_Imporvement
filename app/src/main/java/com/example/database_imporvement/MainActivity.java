@@ -70,8 +70,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 addProductInBackground(new Product(binding.textViewName.getText().toString(),
                         Integer.parseInt(binding.textViewQuantity.getText().toString())));
+                adapter.notifyDataSetChanged();
             }
         });
+
 
         binding.buttonRetrieve.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 productdb.getProductDao().insertProduct(product);
+
+                adapter.notifyDataSetChanged();
             }
         });
     }
@@ -115,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     finalString.append(temp.getName()).append("   |   ").append(temp.getQuantity())
                             .append("\n");
                 }
+
                 Log.d("testing","basil");
 
             }
