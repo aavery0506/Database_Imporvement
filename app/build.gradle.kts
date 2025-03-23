@@ -38,6 +38,8 @@ android {
 dependencies {
     //added dependencies for Room
     implementation(libs.room.runtime)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
     annotationProcessor(libs.room.compiler)
 
     implementation(libs.appcompat)

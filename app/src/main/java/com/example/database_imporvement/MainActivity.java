@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -26,11 +27,15 @@ import java.util.concurrent.Executors;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
+    private AppBarConfiguration appBarConfiguration;
 
     private ProductRoomDatabase productdb;
     private ArrayList<Product> productList;
 
     private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView recyclerView;
+
+    private RecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        layoutManager = new LinearLayoutManager(this);
+
+
 
 
 
