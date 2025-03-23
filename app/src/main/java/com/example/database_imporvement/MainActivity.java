@@ -30,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private ProductRoomDatabase productdb;
     private ArrayList<Product> productList;
 
-    private RecyclerAdapter adapter;
-    private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -43,10 +41,7 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        layoutManager = new LinearLayoutManager(this);
-        binding.rview.setLayoutManager(layoutManager);
-        adapter = new RecyclerAdapter();
-        binding.rview.setAdapter(adapter);
+
 
         productList = new ArrayList<>();
         //callback method
@@ -70,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 addProductInBackground(new Product(binding.textViewName.getText().toString(),
                         Integer.parseInt(binding.textViewQuantity.getText().toString())));
-                adapter.notifyDataSetChanged();
+
+
             }
         });
 
@@ -80,6 +76,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 getProductListBackground();
 
+            }
+        });
+
+        binding.buttonClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearProductListBackground();
             }
         });
 
@@ -98,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 productdb.getProductDao().insertProduct(product);
 
-                adapter.notifyDataSetChanged();
             }
         });
     }
@@ -109,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                //productdb.getProductDao().insertProduct(product);
 
                 productList = (ArrayList<Product>) productdb.getProductDao().getAllProducts();
 
@@ -119,8 +120,20 @@ public class MainActivity extends AppCompatActivity {
                     finalString.append(temp.getName()).append("   |   ").append(temp.getQuantity())
                             .append("\n");
                 }
+                binding.editTextOut.setText(finalString);
 
-                Log.d("testing","basil");
+            }
+        });
+    }
+
+    public void clearProductListBackground(){
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                productdb.clearAllTables();
+                binding.editTextOut.setText("No Products Available");
 
             }
         });

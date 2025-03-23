@@ -18,6 +18,10 @@ public interface ProductDao {
     @Query("DELETE FROM products WHERE productName = :name")
     void deleteProduct(String name);
 
+    @Query("DELETE FROM products")
+    void deleteAllProducts();
+
+
     @Query("SELECT * FROM products")
     List<Product> getAllProducts();
 }
