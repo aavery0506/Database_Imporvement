@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                     finalString.append(temp.getName()).append("   |   ").append(temp.getQuantity())
                             .append("\n");
                 }
-                binding.editTextOut.setText(finalString);
+                //binding.editTextOut.setText(finalString);
 
             }
         });
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 productdb.clearAllTables();
-                binding.editTextOut.setText("No Products Available");
+                //binding.editTextOut.setText("No Products Available");
 
             }
         });
