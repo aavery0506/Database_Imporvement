@@ -18,6 +18,7 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.database_imporvement.databinding.ActivityMainBinding;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
@@ -32,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
     private ProductRoomDatabase productdb;
     private ArrayList<Product> productList;
 
-    private RecyclerView.LayoutManager layoutManager;
-    private RecyclerView recyclerView;
+    //private RecyclerView.LayoutManager layoutManager;
+    //private RecyclerView recyclerView;
 
-    private RecyclerAdapter adapter;
+    //private RecyclerAdapter adapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +49,16 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        layoutManager = new LinearLayoutManager(this);
+        //layoutManager = new LinearLayoutManager(this);
 
+        VPAdapter adapter = new VPAdapter(this);
+        adapter.addFragment(new ShowProducts(),"Products");
+        adapter.addFragment(new RetrieveAll(),"Retrieve All");
 
+        binding.VPout.setAdapter(adapter);
+
+        new TabLayoutMediator(binding.tabLayout,binding.VPout,(tab, position) ->
+                tab.setText(adapter.getPageTitle(position))).attach();
 
 
 
@@ -74,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 addProductInBackground(new Product(binding.textViewName.getText().toString(),
                         Integer.parseInt(binding.textViewQuantity.getText().toString())));
+
 
 
             }
@@ -128,8 +139,10 @@ public class MainActivity extends AppCompatActivity {
                 for(Product temp : productList){
                     finalString.append(temp.getName()).append("   |   ").append(temp.getQuantity())
                             .append("\n");
+                    //adapter.addCard(temp);
+                    //adapter.notifyItemInserted(0);
                 }
-                //binding.editTextOut.setText(finalString);
+
 
             }
         });
