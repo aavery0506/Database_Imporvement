@@ -85,8 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 addProductInBackground(new Product(binding.textViewName.getText().toString(),
                         Integer.parseInt(binding.textViewQuantity.getText().toString())));
 
-
-
             }
         });
 
@@ -139,11 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 for(Product temp : productList){
                     finalString.append(temp.getName()).append("   |   ").append(temp.getQuantity())
                             .append("\n");
-                    //adapter.addCard(temp);
-                    //adapter.notifyItemInserted(0);
                 }
-
-
             }
         });
     }

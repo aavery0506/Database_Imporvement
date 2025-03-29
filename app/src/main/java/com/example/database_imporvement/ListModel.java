@@ -22,11 +22,19 @@ public class ListModel {
         return instance;
     }
 
-    public String getPNames(){
-        return pNames.toString();
+    public void setpNames(ArrayList<String> pNames) {
+        this.pNames = pNames;
     }
 
-    public String getPDetails(){
-        return pDetails.toString();
+    public void setpDetails(ArrayList<String> pDetails) {
+        this.pDetails = pDetails;
+    }
+
+    public ArrayList<String> getpDetails() {
+        return pDetails;
+    }
+
+    public ArrayList<String> getpNames() {
+        return pNames;
     }
 }
