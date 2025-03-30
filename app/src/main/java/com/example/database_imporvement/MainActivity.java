@@ -46,15 +46,18 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        recyclerView = binding.rview;
         layoutManager = new LinearLayoutManager(this);
+        binding.rview.setLayoutManager(layoutManager);
 
 
+        productList = (ArrayList<Product>) productdb.getProductDao().getAllProducts();
 
+        adapter = new RecyclerAdapter(productList);
+        recyclerView.setAdapter(adapter);
 
-
-        productList = new ArrayList<>();
         //callback method
-        RoomDatabase.Callback myCallback = new RoomDatabase.Callback() {
+       /* RoomDatabase.Callback myCallback = new RoomDatabase.Callback() {
             @Override
             public void onCreate(@NonNull SupportSQLiteDatabase db){
                 super.onCreate(db);
@@ -65,15 +68,27 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+
+
         //build and create a connection to the database
         productdb = Room.databaseBuilder(getApplicationContext(),ProductRoomDatabase.class,"products")
                         .addCallback(myCallback).build();
 
+        */
+
         binding.buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addProductInBackground(new Product(binding.textViewName.getText().toString(),
-                        Integer.parseInt(binding.textViewQuantity.getText().toString())));
+               // addProductInBackground(new Product(binding.textViewName.getText().toString(),
+                     //   Integer.parseInt(binding.textViewQuantity.getText().toString())));
+                String name = binding.textViewName.getText().toString();
+                String quantity = binding.textViewQuantity.getText().toString();
+                if(!name.isEmpty()){
+                    Product newP = new Product(name,quantity);
+                    productdb.getProductDao().insertProduct(newP);
+                    //binding.textViewCard.setText("");
+                    refreshList();
+                }
 
 
             }
@@ -102,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
+
+
     public void addProductInBackground(Product product){
         ExecutorService executor = Executors.newSingleThreadExecutor();
 
@@ -146,5 +163,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void refreshList(){
+        adapter.setProductList((ArrayList<Product>) productdb.getProductDao().getAllProducts());
+
     }
 }

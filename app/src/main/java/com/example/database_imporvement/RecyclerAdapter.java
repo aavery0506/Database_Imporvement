@@ -1,5 +1,6 @@
 package com.example.database_imporvement;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,27 +15,18 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    final private ArrayList<String> details;
+    private ArrayList<Product> productList;
 
 
-    public RecyclerAdapter(){
+    public RecyclerAdapter(ArrayList<Product> products){
         super();
-        details = new ArrayList<>();
+        this.productList = products;
 
-        //details.add("Card 1");
+    }
 
-       // details.add("Card 2");
-
-       // details.add("Card 3");
-
-        //details.add("Card 4");
-
-        //details.add("Card 5");
-
-        //details.add("Card 6");
-
-        //details.add("Card 7");
-
+    public void setProductList(ArrayList<Product> products){
+        this.productList = products;
+        notifyDataSetChanged();
     }
     static class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -57,17 +49,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.description.setText(this.details.get(position));
+        holder.description.setText((CharSequence) this.productList.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return this.details.size();
+        return this.productList.size();
     }
 
     public void addCard(Product product){
-        this.details.add(product.toString());
+        this.productList.add(product);
     }
 }
 //dynamically add and remove from recycler view
