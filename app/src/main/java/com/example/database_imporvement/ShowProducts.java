@@ -27,7 +27,7 @@ public class ShowProducts extends Fragment {
        // return inflater.inflate(R.layout.fragment_show_products, container, false);
         binding = FragmentShowProductsBinding.inflate(inflater,container,false);
         ListModel model = ListModel.getInstance();
-        binding.ETShow.setText(model.getPNames());
+        binding.ETShow.setText(model.getPNames().toString());
 
         return binding.getRoot();
 

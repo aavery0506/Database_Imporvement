@@ -30,11 +30,11 @@ public class ListModel {
         this.pDetails = pDetails;
     }
 
-    public ArrayList<String> getpDetails() {
+    public ArrayList<String> getPDetails() {
         return pDetails;
     }
 
-    public ArrayList<String> getpNames() {
+    public ArrayList<String> getPNames() {
         return pNames;
     }
 }

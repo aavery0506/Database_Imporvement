@@ -29,7 +29,7 @@ public class RetrieveAll extends Fragment {
         //return inflater.inflate(R.layout.fragment_retrieve, container, false);
         binding = FragmentRetrieveBinding.inflate(inflater,container,false);
         ListModel model = ListModel.getInstance();
-        binding.ETRetrieve.setText(model.getPDetails());
+        binding.ETRetrieve.setText(model.getPDetails().toString());
 
         return binding.getRoot();
     }
