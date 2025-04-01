@@ -14,9 +14,9 @@ public class Product {
     @ColumnInfo(name = "productName")
     private String name;
     @ColumnInfo(name = "productQuantity")
-    private String quantity;
+    private int quantity;
 
-    public Product(String name, String quantity){
+    public Product(String name, int quantity){
         this.name = name;
         this.quantity= quantity;
     }
@@ -29,7 +29,7 @@ public class Product {
         return this.name;
     }
 
-    public String getQuantity(){
+    public int getQuantity(){
         return this.quantity;
     }
     //setters
@@ -41,8 +41,12 @@ public class Product {
         this.name = name;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String toString(){
+        return this.name + "   |   " + this.quantity;
     }
 
 
